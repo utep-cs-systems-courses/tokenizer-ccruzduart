@@ -30,9 +30,11 @@ int main() {
     case 'c':
       printf("\nPlease enter the id you want to grab \n>>");
       c = getchar();
-      int id = getchar();
+      int id;
+      scanf("%d",&id);
       char *str = get_history(history,id);
       printf("String for id: %d: %s",id,str);
+      c = getchar();
       break;
     case 'd':
       printf("closing..\n");

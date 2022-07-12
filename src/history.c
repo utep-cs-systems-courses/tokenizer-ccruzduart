@@ -4,7 +4,7 @@
 #include "tokenizer.h"
 
 List* init_history() {
-  List *list = malloc(sizeof(List*));
+  List *list = malloc(sizeof(List*)+1);
   (*list).root = NULL;
   return list;
 }
@@ -19,14 +19,13 @@ int str_length(char *str) {
 }
 
 void add_history(List *list, char *str) {
-  static int id = 0;
+  int id = 0;
   Item *addStr = malloc(sizeof(Item));
   int length = str_length(str);
   (*addStr).str = copy_str(str,length);
   if((*list).root == NULL) {
     (*addStr).id == id;
     (*list).root = addStr;
-    id++;
   }
   else {
     puts("inside else");
@@ -34,9 +33,8 @@ void add_history(List *list, char *str) {
     while((*pointer).next) {
       puts("inside while else");
       pointer = (*pointer).next;
-      id++;
     }
-    (*addStr).id = id;
+    (*addStr).id =((*pointer).id+1);
     (*pointer).next = addStr;
   }
 }
