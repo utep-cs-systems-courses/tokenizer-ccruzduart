@@ -28,10 +28,8 @@ void add_history(List *list, char *str) {
     (*list).root = addStr;
   }
   else {
-    puts("inside else");
     Item *pointer = (*list).root;
     while((*pointer).next) {
-      puts("inside while else");
       pointer = (*pointer).next;
     }
     (*addStr).id =((*pointer).id+1);

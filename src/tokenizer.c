@@ -35,6 +35,7 @@ char *copy_str(char *inStr, short len) {
   for (int i = 0; i < len; i++) {
     copy[i] = inStr[i];
   }
+  copy[len +1] = '\0';
   return copy;
 }
 
