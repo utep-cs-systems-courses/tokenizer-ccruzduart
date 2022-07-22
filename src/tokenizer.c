@@ -23,6 +23,7 @@ char *word_terminator(char *word) {
 int count_words(char *str) {
   int count = 0;
   while(non_space_char(*str)) {
+    if (*str == '\0') return count;
     str = word_terminator(str);
     str = word_start(str);
     count++;
@@ -32,7 +33,7 @@ int count_words(char *str) {
 
 char *copy_str(char *inStr, short len) {
   char *copy = malloc((len+1)*sizeof(char));
-  for (int i = 0; i < len; i++) {
+  for (int i = 0; i <= len; i++) {
     copy[i] = inStr[i];
   }
   copy[len +1] = '\0';
@@ -52,8 +53,9 @@ char **tokenize(char *str) {
 }
 
 void print_tokens(char **tokens) {
-  for(int i = 0; tokens[i]; i++) {
-    printf("Token[%d]: %s\n",i,tokens[i]);
+  for(int i = 0; *tokens; i++) {
+    printf("Token[%d]: %s\n",i,*tokens);
+    tokens++;
   }
 }
 
